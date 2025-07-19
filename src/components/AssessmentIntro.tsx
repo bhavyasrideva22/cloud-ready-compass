@@ -1,176 +1,168 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Clock, Target, TrendingUp, Cloud, Database, Shield, Cpu, Network, Zap } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ArrowRight, Clock, Target, TrendingUp, CheckCircle, Zap, Cloud, Shield, Users } from 'lucide-react';
 
 interface AssessmentIntroProps {
   onStartAssessment: () => void;
 }
 
 export const AssessmentIntro = ({ onStartAssessment }: AssessmentIntroProps) => {
+  const careers = [
+    { title: 'AWS Cloud Engineer', description: 'Build and manage cloud infrastructure' },
+    { title: 'Solutions Architect', description: 'Design scalable cloud systems' },
+    { title: 'DevOps Engineer', description: 'Automate CI/CD pipelines' },
+    { title: 'Cloud Security Specialist', description: 'Secure AWS environments' },
+    { title: 'Data Engineer', description: 'Build big data pipelines' },
+    { title: 'Site Reliability Engineer', description: 'Ensure system uptime and performance' }
+  ];
+
+  const traits = [
+    'Strong analytical thinking',
+    'Systems-oriented mindset',
+    'Logical problem-solving',
+    'Interest in automation',
+    'Curiosity about technology trends',
+    'Attention to detail'
+  ];
+
   return (
-    <div className="space-y-8">
+    <div className="max-w-4xl mx-auto space-y-8">
       {/* Hero Section */}
-      <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-        <CardContent className="p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Discover Your AWS Career Potential</h2>
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Take our comprehensive assessment to evaluate your psychological fit, 
-            technical readiness, and career alignment for a future in AWS cloud computing.
+      <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <CardHeader className="text-center pb-4">
+          <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+            Discover Your AWS Career Potential
+          </CardTitle>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Take our comprehensive assessment to evaluate your psychological fit, technical readiness, 
+            and career alignment for a future in AWS cloud computing.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
+        </CardHeader>
+        <CardContent className="text-center">
+          <div className="flex justify-center items-center space-x-6 mb-6">
+            <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Clock className="w-4 h-4" />
-              25-30 minutes
+              <span>25-30 minutes</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Target className="w-4 h-4" />
-              Personalized Results
+              <span>Personalized Results</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center space-x-2 text-sm text-gray-600">
               <TrendingUp className="w-4 h-4" />
-              Career Guidance
+              <span>Career Guidance</span>
             </div>
           </div>
-          
           <Button 
+            onClick={onStartAssessment} 
             size="lg" 
-            className="px-8 py-3 text-lg"
-            onClick={onStartAssessment}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
           >
-            Start Assessment →
+            Start Assessment
+            <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </CardContent>
       </Card>
 
-      {/* What is AWS Section */}
+      {/* What is AWS */}
       <Card>
-        <CardContent className="p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <Cloud className="w-6 h-6 text-primary" />
-            <h3 className="text-2xl font-bold">What is AWS?</h3>
-          </div>
-          
-          <p className="text-muted-foreground mb-6 text-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <Zap className="w-6 h-6 text-blue-600" />
+            <span>What is AWS?</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
             AWS (Amazon Web Services) is a powerful <strong>cloud computing platform</strong> that offers 
             scalable infrastructure, databases, AI, security, DevOps, and more. It empowers organizations 
             to build modern applications and drive digital transformation.
           </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center p-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Cloud className="w-6 h-6 text-blue-600" />
-              </div>
-              <h4 className="font-semibold text-blue-600 mb-2">Cloud Platform</h4>
-              <p className="text-sm text-muted-foreground">Scalable, secure, and accessible from anywhere</p>
+          <div className="grid md:grid-cols-3 gap-4 mt-6">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-blue-900 mb-2">Cloud Platform</h4>
+              <p className="text-sm text-blue-700">Scalable, secure, and accessible from anywhere</p>
             </div>
-            
-            <div className="text-center p-4">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Zap className="w-6 h-6 text-green-600" />
-              </div>
-              <h4 className="font-semibold text-green-600 mb-2">Automation & DevOps</h4>
-              <p className="text-sm text-muted-foreground">Streamline deployments and reduce manual work</p>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-900 mb-2">Automation & DevOps</h4>
+              <p className="text-sm text-green-700">Streamline deployments and reduce manual work</p>
             </div>
-            
-            <div className="text-center p-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Shield className="w-6 h-6 text-purple-600" />
-              </div>
-              <h4 className="font-semibold text-purple-600 mb-2">Enterprise Scale</h4>
-              <p className="text-sm text-muted-foreground">Used by Fortune 500 companies worldwide</p>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-purple-900 mb-2">Enterprise Scale</h4>
+              <p className="text-sm text-purple-700">Used by Fortune 500 companies worldwide</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Career Opportunities */}
+      {/* Career Paths */}
       <Card>
-        <CardContent className="p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <TrendingUp className="w-6 h-6 text-primary" />
-            <h3 className="text-2xl font-bold">Career Opportunities</h3>
-          </div>
-          
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <Users className="w-6 h-6 text-green-600" />
+            <span>Career Opportunities</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { title: "AWS Cloud Engineer", desc: "Build and manage cloud infrastructure" },
-              { title: "Solutions Architect", desc: "Design scalable cloud systems" },
-              { title: "DevOps Engineer", desc: "Automate CI/CD pipelines" },
-              { title: "Cloud Security Specialist", desc: "Secure AWS environments" },
-              { title: "Data Engineer", desc: "Build big data pipelines" },
-              { title: "Site Reliability Engineer", desc: "Ensure system uptime and performance" }
-            ].map((role) => (
-              <div key={role.title} className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">{role.title}</h4>
-                <p className="text-sm text-muted-foreground">{role.desc}</p>
+            {careers.map((career, index) => (
+              <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                <h4 className="font-semibold text-gray-900 mb-2">{career.title}</h4>
+                <p className="text-sm text-gray-600">{career.description}</p>
               </div>
             ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Ideal Traits & Skills */}
+      {/* Ideal Traits */}
       <Card>
-        <CardContent className="p-8">
-          <h3 className="text-2xl font-bold mb-6">Ideal Traits & Skills</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold mb-3">Psychological Traits</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• Strong analytical thinking</li>
-                <li>• Systems-oriented mindset</li>
-                <li>• Logical problem-solving</li>
-                <li>• Interest in automation</li>
-                <li>• Curiosity about technology trends</li>
-                <li>• Attention to detail</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3">Technical Prerequisites</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• Basic Linux/CLI experience</li>
-                <li>• Understanding of networking</li>
-                <li>• Scripting knowledge (Python/Bash)</li>
-                <li>• Comfort with cloud concepts</li>
-                <li>• Interest in DevOps practices</li>
-                <li>• Security awareness</li>
-              </ul>
-            </div>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <CheckCircle className="w-6 h-6 text-orange-600" />
+            <span>Ideal Traits & Skills</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-2 gap-3">
+            {traits.map((trait, index) => (
+              <div key={index} className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                <span className="text-gray-700">{trait}</span>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* What You'll Discover */}
-      <Card>
-        <CardContent className="p-8">
-          <h3 className="text-2xl font-bold mb-6">What You'll Discover</h3>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+      {/* Assessment Overview */}
+      <Card className="border-2 border-gray-200">
+        <CardHeader>
+          <CardTitle>What You'll Discover</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-semibold mb-4">Assessment Modules:</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                  <span>Psychological Fit Evaluation</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                  <span>Technical Aptitude Testing</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                  <span>WISCAR Framework Analysis</span>
-                </div>
-              </div>
+              <h4 className="font-semibold text-gray-900 mb-3">Assessment Modules:</h4>
+              <ul className="space-y-2">
+                <li className="flex items-center space-x-2">
+                  <Badge variant="outline" className="bg-purple-50 text-purple-700">1</Badge>
+                  <span className="text-sm">Psychological Fit Evaluation</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Badge variant="outline" className="bg-green-50 text-green-700">2</Badge>
+                  <span className="text-sm">Technical Aptitude Testing</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Badge variant="outline" className="bg-orange-50 text-orange-700">3</Badge>
+                  <span className="text-sm">WISCAR Framework Analysis</span>
+                </li>
+              </ul>
             </div>
-            
             <div>
-              <h4 className="font-semibold mb-4">Your Results Include:</h4>
-              <ul className="space-y-2 text-muted-foreground">
+              <h4 className="font-semibold text-gray-900 mb-3">Your Results Include:</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Personalized fit score (0-100)</li>
                 <li>• Detailed trait analysis</li>
                 <li>• Technical readiness assessment</li>
